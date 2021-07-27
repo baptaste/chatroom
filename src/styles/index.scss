@@ -3,18 +3,28 @@
 
 body {
   font-family: sans-serif;
+  background-color: #13405D;
 }
 
 .app {
   width: 500px;
   height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 2rem auto;
-  padding: 1rem;
-  background-color: #aaa;
+  background-color: #BDDCF0;
+  border-radius: 10px;
+}
+
+.messagesList {
+  padding: 1rem 3rem;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .message {
-  margin: 1rem auto;
+  margin: 2.3rem auto;
 
   &__author {
     font-weight: bold;
@@ -22,8 +32,37 @@ body {
   }
 
   &__content {
+    width: fit-content;
     padding: 1em 1.5em;
-    border: 1px solid grey;
+    border-radius: 25px;
     background-color: white;
+    color: #2980B9;
   }
+}
+
+.form {
+  width: 500px;
+  height: 70px;
+  display: flex;
+
+  &__message-field {
+    width: 80%;
+    height: 100%;
+    font-size: 1.3rem;
+    padding: 1em 1.3em;
+    border-style: none;
+  }
+
+  &__send-btn {
+    width: 20%;
+    height: 100%;
+    border: none;
+    background-color: white;
+    padding: 0;
+  }
+}
+
+.fa-paper-plane {
+  font-size: 2.3rem;
+  color: #2980B9;
 }
