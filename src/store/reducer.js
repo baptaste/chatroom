@@ -1,4 +1,6 @@
 /* eslint-disable arrow-body-style */
+import { HANDLE_INPUT_CHANGE } from './actions';
+
 const initialState = {
   messages: [
     {
@@ -18,10 +20,19 @@ const initialState = {
       message: 'Seul lavenir nous le diras...',
     },
   ],
+  inputValue: '',
 };
 
 const reducer = (oldState = initialState, action) => {
-  return oldState;
+  switch (action.type) {
+    case HANDLE_INPUT_CHANGE:
+      return {
+        ...oldState,
+        inputValue: action.value,
+      };
+    default:
+      return oldState;
+  }
 };
 
 export default reducer;
