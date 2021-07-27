@@ -1,6 +1,5 @@
 /* eslint-disable arrow-body-style */
 const initialState = {
-  // messages: ['Salut', 'Ca sent bon', 'Bof!', 'Seul lavenir nous le diras...'],
   messages: [
     {
       author: 'Johnny Fiable',

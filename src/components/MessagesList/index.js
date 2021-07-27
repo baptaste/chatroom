@@ -7,7 +7,9 @@ const MessagesList = ({ messages }) => (
   <div className="messagesList">
     {messages.map((message) => (
       <Message
-        message={message}
+        key={message.author + message.message}
+        author={message.author}
+        message={message.message}
       />
     ))}
   </div>
@@ -15,7 +17,10 @@ const MessagesList = ({ messages }) => (
 
 MessagesList.propTypes = {
   messages: PropTypes.arrayOf(
-    PropTypes.string.isRequired,
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      message: PropTypes.string.isRequired,
+    }).isRequired,
   ).isRequired,
 };
 

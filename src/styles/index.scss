@@ -13,19 +13,17 @@ body {
   background-color: #aaa;
 }
 
-.messagesList {
-  background-color: white;
-}
-
 .message {
   margin: 1rem auto;
 
   &__author {
     font-weight: bold;
+    margin-bottom: .5rem;
   }
 
   &__content {
     padding: 1em 1.5em;
     border: 1px solid grey;
+    background-color: white;
   }
 }
