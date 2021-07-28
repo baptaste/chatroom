@@ -1,0 +1,17 @@
+@use 'src/styles/vars';
+
+.settings {
+  position: fixed;
+  top: 50px;
+  right: 100px;
+  
+  &__form {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &--open {
+      visibility: visible;
+    }
+  }
+}

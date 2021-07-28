@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Message from 'src/components/Message';
+import './messagesList.scss';
 
 const MessagesList = ({ messages }) => {
   const messageRef = useRef(null);

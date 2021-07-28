@@ -5,10 +5,14 @@ import React from 'react';
 import ConnectedMessagesList from 'src/containers/MessagesList';
 import ConnectedForm from 'src/containers/Form';
 
+import Settings from 'src/components/Settings';
+import './app.scss';
+
 // == Composant
 
 const App = () => (
   <div className="app">
+    <Settings />
     <ConnectedMessagesList />
     <ConnectedForm />
   </div>

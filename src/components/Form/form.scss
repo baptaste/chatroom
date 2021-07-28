@@ -1,0 +1,23 @@
+@use 'src/styles/vars';
+
+.form {
+  width: 100%;
+  height: vars.$input-height;
+  display: flex;
+
+  &__message-field {
+    width: 80%;
+    height: 100%;
+    font-size: 1.3rem;
+    padding: 1em 1.3em;
+    border: none;
+  }
+
+  &__send-btn {
+    width: 20%;
+    height: 100%;
+    border: none;
+    background-color: white;
+    vertical-align: top;
+  }
+}

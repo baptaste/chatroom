@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import './form.scss';
+
 const Form = ({ inputValue, onInputChange, sendMessage }) => {
   const inputRef = useRef(null);
   useEffect(() => {
