@@ -3,46 +3,89 @@
 
 body {
   font-family: sans-serif;
-  background-color: #13405D;
+  background-color: vars.$bg-color;
+}
+
+html, body, #root {
+  height: 100%;
 }
 
 .app {
   width: 500px;
-  height: 700px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 2rem auto;
-  background-color: #BDDCF0;
-  border-radius: 10px;
+  margin: 0 auto;
+  background-color: vars.$primary;
 }
 
 .messagesList {
-  padding: 1rem 3rem;
-  height: 100%;
+  // marche aussi : flex: 1;
+  height: calc(100% - #{vars.$input-height});
   overflow-y: auto;
+  scroll-behavior: smooth;
+  // animation: pop 0.4s cubic-bezier(.48,1.7,.87,1);
+
+  // @keyframes pop {
+  //   0% {
+  //     transform: scale(0);
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //    transform: scale(1);
+  //    opacity: 1;
+  //   }
+  // }
+
+  &__scrollTop-btn {
+    position: fixed;
+    right: 30%;
+    bottom: 5rem;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: transparent;
+  }
 }
 
 .message {
-  margin: 2.3rem auto;
+  margin: 1.5rem 2rem;
 
   &__author {
     font-weight: bold;
-    margin-bottom: .5rem;
+    margin-bottom: 1.3rem;
+    margin-left: 1rem;
   }
 
   &__content {
-    width: fit-content;
+    position: relative;
+    display: inline-block;
+    max-width: 300px;
+    word-wrap: break-word;
     padding: 1em 1.5em;
     border-radius: 25px;
     background-color: white;
-    color: #2980B9;
+    color: vars.$text;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      display: block;
+      bottom: 45px;
+      left: 20px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid white;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid white;
+    }
   }
 }
 
 .form {
-  width: 500px;
-  height: 70px;
+  width: 100%;
+  height: vars.$input-height;
   display: flex;
 
   &__message-field {
@@ -50,7 +93,7 @@ body {
     height: 100%;
     font-size: 1.3rem;
     padding: 1em 1.3em;
-    border-style: none;
+    border: none;
   }
 
   &__send-btn {
@@ -58,11 +101,17 @@ body {
     height: 100%;
     border: none;
     background-color: white;
-    padding: 0;
+    vertical-align: top;
   }
 }
 
-.fa-paper-plane {
+// form submit btn & scroll to top btn
+.fa-paper-plane, .fa-angle-up  {
   font-size: 2.3rem;
-  color: #2980B9;
+  color: vars.$text;
+  transition: color 200ms ease-in-out;
+
+  &:hover {
+    color: hsl(204, 64%, 24%);
+  }
 }
