@@ -5,7 +5,7 @@ import React from 'react';
 import ConnectedMessagesList from 'src/containers/MessagesList';
 import ConnectedForm from 'src/containers/Form';
 
-import Settings from 'src/components/Settings';
+import Settings from 'src/containers/Settings';
 import './app.scss';
 
 // == Composant

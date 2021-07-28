@@ -4,14 +4,56 @@
   position: fixed;
   top: 50px;
   right: 100px;
+  display: flex;
+
+  &__display-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    color: vars.$bg-color;
+    border: none;
+    border-radius: 50%;
+    padding-bottom: 1.3rem;
+    transition: scale 150ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
   
   &__form {
-    visibility: hidden;
     display: flex;
     flex-direction: column;
+    margin-left: 1rem;
+    animation: apparition 300ms ease-out;
 
-    &--open {
-      visibility: visible;
+    &--input, &--btn {
+      font-size: 1.3rem;
+      padding: .5em 1em;
+      margin-bottom: .7em;
+      border: none;
+      border-radius: 6px;
     }
+
+    &--btn {
+      background-color: #5300FF;
+      color: white;
+      transition: background-color 150ms ease-in-out;
+
+      &:hover {
+        background-color: hsl(260, 100%, 42%);
+      }
+    }
+  }
+}
+
+@keyframes apparition {
+  0% {
+    transform: translateX(99%);
+    // opacity: 0;
+  }
+  100% {
+    transform: translateX(1%);
+    // opacity: 1;
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './form.scss';
 
-const Form = ({ inputValue, onInputChange, sendMessage }) => {
+const Form = ({ msgInputValue, onInputChange, sendMessage }) => {
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current.focus();
@@ -19,7 +19,7 @@ const Form = ({ inputValue, onInputChange, sendMessage }) => {
         type="text"
         className="form__message-field"
         placeholder="Saisissez votre message..."
-        value={inputValue}
+        value={msgInputValue}
         onChange={onInputChange}
       />
       <button
@@ -35,7 +35,7 @@ const Form = ({ inputValue, onInputChange, sendMessage }) => {
 };
 
 Form.propTypes = {
-  inputValue: PropTypes.string.isRequired,
+  msgInputValue: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,
 };

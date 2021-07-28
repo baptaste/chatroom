@@ -1,5 +1,11 @@
 /* eslint-disable arrow-body-style */
-import { HANDLE_INPUT_CHANGE, HANDLE_FORM_SUBMIT } from './actions';
+import {
+  HANDLE_INPUT_CHANGE,
+  HANDLE_FORM_SUBMIT,
+  HANDLE_EMAIL_CHANGE,
+  HANDLE_PASSWORD_CHANGE,
+  TOGGLE_DISPLAY_SETTINGS,
+} from './actions';
 import { getHighestId } from './selectors';
 
 const initialState = {
@@ -25,8 +31,11 @@ const initialState = {
       message: 'Seul lavenir nous le diras...',
     },
   ],
-  inputValue: '',
+  msgInputValue: '',
+  emailInputValue: '',
+  passwordInputValue: '',
   nickname: 'Baptiste',
+  isSettingsOpen: false,
 };
 
 const reducer = (oldState = initialState, action) => {
@@ -34,11 +43,26 @@ const reducer = (oldState = initialState, action) => {
     case HANDLE_INPUT_CHANGE:
       return {
         ...oldState,
-        inputValue: action.value,
+        msgInputValue: action.value,
+      };
+    case HANDLE_EMAIL_CHANGE:
+      return {
+        ...oldState,
+        emailInputValue: action.value,
+      };
+    case HANDLE_PASSWORD_CHANGE:
+      return {
+        ...oldState,
+        passwordInputValue: action.value,
+      };
+    case TOGGLE_DISPLAY_SETTINGS:
+      return {
+        ...oldState,
+        isSettingsOpen: !oldState.isSettingsOpen,
       };
     case HANDLE_FORM_SUBMIT: {
       // si pas de string vide, on accepte la soumission
-      if (oldState.inputValue.trim() !== '') {
+      if (oldState.msgInputValue.trim() !== '') {
         // fonction dite selecteur (cf: store/selector.js)
         const maxId = getHighestId(oldState);
 
@@ -47,13 +71,13 @@ const reducer = (oldState = initialState, action) => {
           // sinon, c'est le 1er msg, on lui donne l'id 1
           id: maxId ? maxId + 1 : 1,
           author: oldState.nickname,
-          message: oldState.inputValue,
+          message: oldState.msgInputValue,
         };
 
         return {
           ...oldState,
           messages: [...oldState.messages, newMessage],
-          inputValue: '',
+          msgInputValue: '',
         };
       }
       // string vide ==> on return le oldState, pas de soumission du form
