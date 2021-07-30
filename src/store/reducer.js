@@ -5,6 +5,7 @@ import {
   HANDLE_EMAIL_CHANGE,
   HANDLE_PASSWORD_CHANGE,
   TOGGLE_DISPLAY_SETTINGS,
+  HANDLE_LOGOUT,
 } from './actions';
 import { getHighestId } from './selectors';
 
@@ -32,10 +33,11 @@ const initialState = {
     },
   ],
   msgInputValue: '',
-  emailInputValue: '',
-  passwordInputValue: '',
-  nickname: 'Baptiste',
+  emailInputValue: 'bouclierman@herocorp.io',
+  passwordInputValue: 'jennifer',
+  nickname: null,
   isSettingsOpen: false,
+  isLogged: false,
 };
 
 const reducer = (oldState = initialState, action) => {
@@ -54,6 +56,16 @@ const reducer = (oldState = initialState, action) => {
       return {
         ...oldState,
         passwordInputValue: action.value,
+      };
+    case 'SET_SETTINGS_FIELD_VALUE':
+      return {
+        //
+      };
+    case 'LOGIN_SUCCESS':
+      return {
+        ...oldState,
+        nickname: action.nickname,
+        isLogged: !oldState.isLogged,
       };
     case TOGGLE_DISPLAY_SETTINGS:
       return {
@@ -83,6 +95,12 @@ const reducer = (oldState = initialState, action) => {
       // string vide ==> on return le oldState, pas de soumission du form
       return oldState;
     }
+    case HANDLE_LOGOUT:
+      return {
+        ...oldState,
+        isLogged: false,
+        nickname: null,
+      };
     default:
       return oldState;
   }

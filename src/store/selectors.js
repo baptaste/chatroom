@@ -9,3 +9,5 @@ export const getHighestId = (state) => {
   // on déverse ce tableau dans les parametres de Math.max pour obtenir... le max (si si)
   return Math.max(...ids);
 };
+
+export const isUserLogged = (state) => state.nickname !== null;

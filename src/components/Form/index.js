@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import './form.scss';
 
-const Form = ({ msgInputValue, onInputChange, sendMessage }) => {
+const Form = ({
+  msgInputValue, onInputChange, sendMessage, isLogged,
+}) => {
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current.focus();
@@ -17,8 +19,9 @@ const Form = ({ msgInputValue, onInputChange, sendMessage }) => {
       <input
         ref={inputRef}
         type="text"
+        disabled={!isLogged}
         className="form__message-field"
-        placeholder="Saisissez votre message..."
+        placeholder={isLogged ? 'Saisissez votre message...' : 'Connectez-vous pour écrire'}
         value={msgInputValue}
         onChange={onInputChange}
       />
@@ -35,6 +38,7 @@ const Form = ({ msgInputValue, onInputChange, sendMessage }) => {
 };
 
 Form.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
   msgInputValue: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,

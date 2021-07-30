@@ -4,12 +4,16 @@ import {
   handleEmailChangeAction,
   handlePasswordChangeAction,
   toggleDisplaySettingsAction,
+  handleUserLogout,
 } from 'src/store/actions';
+
+import { isUserLogged } from 'src/store/selectors';
 
 const mapStateToProps = (state) => ({
   emailInputValue: state.emailInputValue,
   passwordInputValue: state.passwordInputValue,
   isSettingsOpen: state.isSettingsOpen,
+  isLogged: isUserLogged(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,8 +23,15 @@ const mapDispatchToProps = (dispatch) => ({
   onPasswordInputChange: (e) => {
     dispatch(handlePasswordChangeAction(e.target.value));
   },
-  toggleDisplaySettings: (display) => {
-    dispatch(toggleDisplaySettingsAction(display));
+  toggleDisplaySettings: () => {
+    dispatch(toggleDisplaySettingsAction());
+  },
+  onSettingsFormSubmit: (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_LOGIN' });
+  },
+  onUserLogout: () => {
+    dispatch(handleUserLogout());
   },
 });
 

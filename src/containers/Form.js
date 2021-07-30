@@ -2,8 +2,11 @@ import { connect } from 'react-redux';
 import Form from 'src/components/Form';
 import { handleInputChangeAction, handleFormSubmitAction } from 'src/store/actions';
 
+import { isUserLogged } from 'src/store/selectors';
+
 const mapStateToProps = (state) => ({
   msgInputValue: state.msgInputValue,
+  isLogged: isUserLogged(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,7 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sendMessage: (e, msgInputValue) => {
     e.preventDefault();
-    console.log('form submitted!');
     dispatch(handleFormSubmitAction(msgInputValue));
   },
 });
