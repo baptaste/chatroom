@@ -6,7 +6,7 @@ import './messagesList.scss';
 
 const MessagesList = ({ messages }) => {
   const messageRef = useRef(null);
-  // effet appelé lorsque le tableau de messages a changé
+
   useEffect(() => {
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
   }, [messages]);

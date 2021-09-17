@@ -73,14 +73,9 @@ const reducer = (oldState = initialState, action) => {
         isSettingsOpen: !oldState.isSettingsOpen,
       };
     case HANDLE_FORM_SUBMIT: {
-      // si pas de string vide, on accepte la soumission
       if (oldState.msgInputValue.trim() !== '') {
-        // fonction dite selecteur (cf: store/selector.js)
         const maxId = getHighestId(oldState);
-
         const newMessage = {
-          // si on a un max, on ajoute 1
-          // sinon, c'est le 1er msg, on lui donne l'id 1
           id: maxId ? maxId + 1 : 1,
           author: oldState.nickname,
           message: oldState.msgInputValue,
@@ -92,7 +87,6 @@ const reducer = (oldState = initialState, action) => {
           msgInputValue: '',
         };
       }
-      // string vide ==> on return le oldState, pas de soumission du form
       return oldState;
     }
     case HANDLE_LOGOUT:

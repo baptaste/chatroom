@@ -25,17 +25,16 @@
     border-radius: 50%;
     line-height: 0px;
     transition: scale 150ms ease-in-out;
- 
+
     &:hover {
       transform: scale(1.2);
     }
   }
-  
+
   &__form {
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
-    // animation: apparition 300ms ease-out;
 
     &--input, &--btn {
       font-size: 1rem;
@@ -72,18 +71,5 @@
       margin-bottom: 1rem;
       border-radius: 10px;
     }
-  } 
+  }
 }
-
-// form {
-//   animation: apparition 300ms ease-out;
-// }
-
-// @keyframes apparition {
-//   0% {
-//     transform: translateX(99%);
-//   }
-//   100% {
-//     transform: translateX(1%);
-//   }
-// }
